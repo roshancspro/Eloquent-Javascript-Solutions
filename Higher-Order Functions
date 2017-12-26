@@ -82,5 +82,45 @@ console.log(arrays.reduce(mergeArr));
 
 Historical life expectancy
 
+function average(array) {
+  function plus(a, b) { return a + b; }
+  return array.reduce(plus) / array.length;
+}
+
+// Your code here.
+var centuryObj = {};
+
+var getCenturyforPersons = function(person) {
+  var age = person.died - person.born;
+  var century = Math.ceil(person.died / 100);
+  if (centuryObj.hasOwnProperty(century)){
+      var val = [];
+   	  val = centuryObj[century];
+      val.push(age);
+      centuryObj[century] = val;
+      }
+	else{
+      var val = [];
+      val.push(age);
+      centuryObj[century] = val;
+    }
+  //console.log(centuryObj);
+}
+
+ancestry.forEach(getCenturyforPersons);
+
+for(var century in centuryObj){
+  if(centuryObj.hasOwnProperty(century)){
+    //numb = numb.toFixed(2);
+     console.log(century+": "+average(centuryObj[century]).toFixed(1));
+     }
+}
 
 
+
+// → 16: 43.5
+//   17: 51.2
+//   18: 52.8
+//   19: 54.8
+//   20: 84.7
+//   21: 94
