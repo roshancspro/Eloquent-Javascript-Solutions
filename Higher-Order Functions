@@ -29,5 +29,58 @@ console.log(some([NaN, 3, 4], isNaN));
 console.log(some([2, 3, 4], isNaN));
 // → false
 
+========================================================================================
+
+Mother-child age difference:
+
+function average(array) {
+  function plus(a, b) { return a + b; }
+  return array.reduce(plus) / array.length;
+}
+
+var byName = {};
+ancestry.forEach(function(person) {
+  byName[person.name] = person;
+});
+
+// Your code here.
+var hasKnownMother = function(person){
+  //return byName[person.name].mother !== null;
+  //console.log("name "+person.name);
+  var mother = byName[person.name].mother;
+  //console.log(mother);
+  if( mother !== null )
+	  return byName[mother] !== undefined ;
+  
+}
+
+var ageDifference = function(person){
+  //var mother = byName[person.mother];
+  //console.log(person.name + " " +person.born);
+  //console.log(byName[person.mother].name + " " +byName[person.mother].born);
+  return person.born - byName[person.mother].born;
+}
+
+console.log(average(ancestry.filter(hasKnownMother).map(ageDifference)));
+//console.log(ancestry.filter(hasKnownMother).map(ageDifference));
+
+
+========================================================================================
+Flattening
+Use the reduce method in combination with the concat method to
+“flatten” an array of arrays into a single array that has all the elements of the input arrays.
+
+var arrays = [[1, 2, 3], [4, 5], [6]];
+// Your code here.
+var mergeArr = function(arr1,arr2){
+  return arr1.concat(arr2);
+}
+console.log(arrays.reduce(mergeArr));
+// → [1, 2, 3, 4, 5, 6]
+
+========================================================================================
+
+Historical life expectancy
+
 
 
